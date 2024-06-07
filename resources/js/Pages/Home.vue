@@ -43,15 +43,15 @@ export default {
                 <h2 class="text-4xl font-bold mb-6 ">Let's get started</h2>
                 <p class="mb-6 text-gray-400 ">Please select one or more options below that you'd like to have quoted for insurance.</p>
                 <div class="space-y-4">
-                    <button @click="toggleSelection('home')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.home, 'bg-gray-100 text-gray-800': !selected.home}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center">
+                    <button @click="toggleSelection('home')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.home, 'bg-gray-100 text-gray-800': !selected.home}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center border border-gray-300 shadow">
                         <span>Home</span>
                         <span  class="mt-2">Your current or soon-to-be home</span>
                     </button>
-                    <button @click="toggleSelection('auto')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.auto, 'bg-gray-100 text-gray-800': !selected.auto}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center">
+                    <button @click="toggleSelection('auto')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.auto, 'bg-gray-100 text-gray-800': !selected.auto}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center border border-gray-300 shadow">
                         <span>Auto</span>
                         <span class="mt-2">Your personal vehicle(s)</span>
                     </button>
-                    <button @click="toggleSelection('rv')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.rv, 'bg-gray-100 text-gray-800': !selected.rv}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center">
+                    <button @click="toggleSelection('rv')" :class="{'bg-gray-100 text-gray-800 border border-blue-600': selected.rv, 'bg-gray-100 text-gray-800': !selected.rv}" class="w-full py-6 px-4 rounded-lg flex flex-col items-start justify-center text-center border border-gray-300 shadow">
                         <span>Recreational Vehicle</span>
                         <span class="mt-2">Your boat, RV, motorcycle, etc.</span>
                     </button>

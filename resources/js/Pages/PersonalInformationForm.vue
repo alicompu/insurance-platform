@@ -5,11 +5,11 @@ export default {
     setup() {
 
         const form = useForm({
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             email: '',
             phone: '',
-            contactPreference: 'Email',
+            contact_preference: 'email',
         });
 
         const submitForm = () => {
@@ -43,11 +43,11 @@ export default {
                     <div class="flex justify-between">
                         <div class="mb-4 flex-grow">
                             <label for="first-name" class="block text-gray-700">First name *</label>
-                            <input v-model="form.firstName" placeholder="Enter First Name" type="text" id="first-name" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
+                            <input v-model="form.first_name" placeholder="Enter First Name" type="text" id="first-name" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
                         </div>
                         <div class="mb-4 flex-grow ml-4">
                             <label for="last-name" class="block text-gray-700">Last name *</label>
-                            <input v-model="form.lastName" type="text" placeholder="Enter Last Name" id="last-name" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
+                            <input v-model="form.last_name" type="text" placeholder="Enter Last Name" id="last-name" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
                         </div>
                     </div>
                     <div class="mb-4">
@@ -60,9 +60,9 @@ export default {
                     </div>
                     <div class="mb-4">
                         <label for="contact-preference" class="block text-gray-700">Contact Preference *</label>
-                        <select v-model="form.contactPreference" id="contact-preference" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
-                            <option value="Email">Email</option>
-                            <option value="Phone">Phone</option>
+                        <select v-model="form.contact_preference" id="contact-preference" class="mt-1 block w-full border border-gray-300 rounded-xl p-4" required>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
                         </select>
                     </div>
                     <button type="submit" class="bg-blue-500 text-white p-4 px-4 rounded-xl w-full font-bold">Continue</button>

@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class InsuranceController extends Controller
 {
     public function store(Request $request)
     {
-        // Handle the form submission
-        $data = $request->validate([
-            'home' => 'required|boolean',
-            'auto' => 'required|boolean',
-            'rv' => 'required|boolean',
-        ]);
+        session()->put($request->all());
 
-        return redirect()->route('insurance-form')->with('success', 'Form submitted successfully!');
+        return redirect()->to("personal-info-form");
     }
 }

@@ -2,25 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\PersonalInfo;
+use App\Requests\PersonalInfoFormRequest;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class PersonalInfoController extends Controller
 {
-    public function store(Request $request)
+    public function store(PersonalInfoFormRequest $request)
     {
-        // Handle the form submission
-        $data = $request->validate([
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:15',
-            'contactPreference' => 'required|string|in:Email,Phone',
-        ]);
+        try {
+            DB::transaction(function () use ($request) {
+                $data = $request->validated();
+                $personalInfo = PersonalInfo::create($data);
+                session()->put('personal_info_id', $personalInfo->id);
+                DB::commit();
+            });
 
-        // Process the data (e.g., save to database, send an email, etc.)
+            return redirect()->to("address-info-form")->with('success', 'Personal information saved successfully!');
+        } catch (\Exception $e) {
+            report($e);
+            DB::rollBack();
 
-        return redirect()->route('personal-info-form')->with('success', 'Personal information submitted successfully!');
+            return redirect()->to('personal-info-form')->with('error', $e->getMessage());
+        }
     }
 
     public function showForm()

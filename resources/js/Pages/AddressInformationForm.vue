@@ -4,7 +4,7 @@ import {useForm} from '@inertiajs/vue3';
 export default {
     setup() {
         const form = useForm({
-            streetAddress: '',
+            street_address: '',
             apt: '',
             city: '',
             state: 'TX',
@@ -42,7 +42,7 @@ export default {
                     <div class="flex justify-between">
                         <div class="mb-4 flex-grow">
                             <label for="street-address" class="block text-gray-700">Street Address</label>
-                            <input v-model="form.streetAddress" type="text" placeholder="Enter Street Address" id="street-address" class="mt-1 block w-full border border-gray-300 rounded-xl p-4">
+                            <input v-model="form.street_address" type="text" placeholder="Enter Street Address" id="street-address" class="mt-1 block w-full border border-gray-300 rounded-xl p-4">
                         </div>
                         <div class="mb-4 flex-grow ml-4">
                             <label for="apt" class="block text-gray-700">Ste/Apt</label>

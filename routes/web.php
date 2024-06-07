@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\AddressInfoController;
+use App\Http\Controllers\InsuranceController;
+use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+    return Inertia::render('Home', [
+        'canLogin'       => Route::has('login'),
+        'canRegister'    => Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'phpVersion'     => PHP_VERSION,
     ]);
 });
 
@@ -24,4 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+//home
+Route::post('/insurance-quote', [InsuranceController::class, 'store']);
+
+//personal-info
+Route::get('/personal-info-form', [PersonalInfoController::class, 'showForm']);
+Route::post('/submit-personal-info', [PersonalInfoController::class, 'store']);
+
+//address-info
+Route::get('/address-info-form', [AddressInfoController::class, 'showForm']);
+Route::post('/submit-address-info', [AddressInfoController::class, 'store']);
+
+require __DIR__ . '/auth.php';

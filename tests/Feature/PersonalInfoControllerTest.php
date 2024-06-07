@@ -16,10 +16,11 @@ class PersonalInfoControllerTest extends TestCase
     public function it_stores_personal_info_and_redirects_to_address_info_form()
     {
         $personalInfoData = [
-            'first_name' => 'John',
-            'last_name'  => 'Doe',
-            'email'      => 'john.doe@example.com',
-            'phone'      => '123-456-7890',
+            'first_name'         => 'John',
+            'last_name'          => 'Doe',
+            'email'              => 'john.doe@example.com',
+            'phone'              => '123-456-7890',
+            'contact_preference' => 'phone',
         ];
 
         $response = $this->post(route('personal-info.store'), $personalInfoData);
@@ -39,10 +40,11 @@ class PersonalInfoControllerTest extends TestCase
         DB::shouldReceive('transaction')->once()->andThrow(new \Exception('Transaction failed'));
 
         $personalInfoData = [
-            'first_name' => 'John',
-            'last_name'  => 'Doe',
-            'email'      => 'john.doe@example.com',
-            'phone'      => '123-456-7890',
+            'first_name'         => 'John',
+            'last_name'          => 'Doe',
+            'email'              => 'john.doe@example.com',
+            'phone'              => '123-456-7890',
+            'contact_preference' => 'email',
         ];
 
         $response = $this->post(route('personal-info.store'), $personalInfoData);

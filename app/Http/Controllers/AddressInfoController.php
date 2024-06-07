@@ -55,7 +55,6 @@ class AddressInfoController extends Controller
             report($e);
             DB::rollBack();
 
-            dd($e->getMessage());
             return redirect()->to('address-info-form')->with('error', $e->getMessage());
         }
     }
